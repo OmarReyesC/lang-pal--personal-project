@@ -60,3 +60,35 @@ body{
   font-weight: 600;
   line-height: 1.25rem; /* 125% */
 }
+
+/* Review exercise */
+
+.review {
+  text-align: center;
+}
+.review__title { 
+  margin-top: 5rem;
+  color: var(--color-neutral-25);
+}
+.review__pic {
+  display: block;
+  width: 7.5rem;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  margin: 5rem auto 0;
+
+}
+.review__field {
+ margin-top: 2.5rem;
+ height: 2rem;
+ border-radius: 0.5rem 0.5rem 0rem 0rem;
+ border: 1px solid var(--color-primary-100);
+ background: var(--color-primary-10);
+ text-align: center;
+}
+
+.review__translation {
+  margin-top: 1rem;
+  color: var(--color-neutral-25);
+}
