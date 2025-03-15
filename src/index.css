@@ -74,6 +74,13 @@ button {
   background: var(--color-primary-100);
   color: var(--color-neutral-100);
 }
+.secondary-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-primary-100);
+  border-radius: 0.5rem;
+  background: none;
+  color: var(--color-primary-100);
+}
 
 /* Review exercise */
 
@@ -118,10 +125,18 @@ button {
 }
 
 .review__completed {
-  margin: 8rem auto 0;
+  margin-top: 8rem;
   display: flex;
-  width: 30rem;
-  justify-content: space-between;
+  gap: 2.5rem;
+  justify-content: center;
   align-items:center;
 }
-
+.review__completed-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2.5rem;
+}
+.review__completed-buttons button {
+  width: 8rem;
+}

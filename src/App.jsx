@@ -15,6 +15,11 @@ function App() {
     setUserAnswer(answer);
   }
 
+  function getNewWord() {
+    setWord(getRandomWord()); // <= Parenthesis or not??
+    setUserAnswer(null);
+  }
+
   function answerStyle() {
     if (answerIsCorrect) {
       return 'field-correct'
@@ -36,7 +41,9 @@ function App() {
         <div className="review__completed">
         <p className="review__completed-message headline">{answerIsCorrect ? 'Good job!' : 'Not quite right' }</p>
         <div className="review__completed-buttons">
-          <button className="primary-button">Continue</button>
+          <button className={answerIsCorrect ? "primary-button" : "secondary-button"} onClick={getNewWord}>Continue</button>
+          {!answerIsCorrect && 
+          <button className="primary-button" onClick={() => {setUserAnswer(null)}}>Try again</button>}
         </div>
         </div>}
     </main>
