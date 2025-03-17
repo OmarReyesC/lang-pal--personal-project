@@ -6,6 +6,10 @@ function App() {
   const [words, setWords] = useState(() => getRandomWords());
   const [wordIndex, setWordIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState(null);
+  const [correctAnswers, setCorrectAnswers] = useState([]);
+  const [wrongAnswers, setWrongAnswers] = useState([]);
+  console.log('Correct Answers:', correctAnswers)
+  console.log('Wrong Answers:', wrongAnswers)
 
   let isAnswered = userAnswer !== null;
   let answerIsCorrect = userAnswer === words[wordIndex].spaVersion;
@@ -17,6 +21,11 @@ function App() {
   }
 
   function getNewWord() {
+    if(answerIsCorrect) {
+      setCorrectAnswers(prevCorrectAnswers => [...prevCorrectAnswers, words[wordIndex]]);
+    } else if (!answerIsCorrect) {
+      setWrongAnswers(prevWrongAnswers => [...prevWrongAnswers, words[wordIndex]]);
+    }
     setWordIndex((currentIndex) => currentIndex + 1);
     setUserAnswer(null);
   }
