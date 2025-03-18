@@ -8,8 +8,6 @@ function App() {
   const [userAnswer, setUserAnswer] = useState(null);
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
-  console.log('Correct Answers:', correctAnswers)
-  console.log('Wrong Answers:', wrongAnswers)
 
   let isAnswered = userAnswer !== null;
   let answerIsCorrect = userAnswer === words[wordIndex].spaVersion;
