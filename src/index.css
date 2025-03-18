@@ -27,6 +27,7 @@ body{
   color: var(--color-neutral-10);
 }
 
+
 /* Font styles */
 
 .display {
@@ -80,6 +81,32 @@ button {
   border-radius: 0.5rem;
   background: none;
   color: var(--color-primary-100);
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  padding: 1rem 2.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__logo {
+  color: var(--color-primary-100);
+}
+.header__navbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.profile-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-link img{
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 /* Review exercise */
