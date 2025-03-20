@@ -34,6 +34,10 @@ body{
 main {
   margin-top: 4.375rem;  /* Top make room for Header to be fixed*/
 }
+a {
+  text-decoration: none;
+}
+
 
 /* Font styles */
 
@@ -109,6 +113,9 @@ button {
   align-items: center;
   gap: 2rem;
 }
+.header__navbar a{
+  color: var(--color-neutral-10); /* Keeping links from becoming purple*/
+}
 .profile-link {
   display: flex;
   align-items: center;
@@ -117,6 +124,9 @@ button {
 .profile-link img{
   width: 1.5rem;
   height: 1.5rem;
+}
+.header__navbar .active {
+  color: var(--color-primary-100);
 }
 
 /* Home Page */
