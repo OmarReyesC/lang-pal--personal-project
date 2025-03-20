@@ -26,7 +26,14 @@ body{
   background-color: var(--color-neutral-100);
   color: var(--color-neutral-10);
 }
-
+#root {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  margin-top: 4.375rem;  /* Top make room for Header to be fixed*/
+}
 
 /* Font styles */
 
@@ -86,6 +93,8 @@ button {
 /* Header */
 
 .header {
+  position: fixed;
+  width: 100vW;
   display: flex;
   padding: 1rem 2.5rem;
   justify-content: space-between;
@@ -93,6 +102,7 @@ button {
 }
 .header__logo {
   color: var(--color-primary-100);
+  text-decoration: none;
 }
 .header__navbar {
   display: flex;
@@ -107,6 +117,38 @@ button {
 .profile-link img{
   width: 1.5rem;
   height: 1.5rem;
+}
+
+/* Home Page */
+
+.home__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.home__title{
+  width: 42rem;
+  margin-top: 2.5rem;
+  margin-left: 2.5rem;
+  color: var(--color-neutral-100);
+  text-shadow: 0 0 4px var(--color-neutral-10);
+}
+
+.home__cta {
+  width: 40rem;
+  padding: 1rem 0.5rem;
+  display: block;
+  margin: 0 auto 3.5rem;
+  color: var(--color-neutral-100);
+  background-color: var(--color-primary-100);
+  border-radius: 0.5rem;
+  border: none;
 }
 
 /* Review exercise */
@@ -166,4 +208,13 @@ button {
 }
 .review__completed-buttons button {
   width: 8rem;
+}
+
+/* Footer */
+
+.footer {
+  padding: 0.5rem;
+  text-align: center;
+  background-color: var(--color-neutral-10);
+  color: var(--color-neutral-100);
 }

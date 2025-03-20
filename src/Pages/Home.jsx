@@ -1,4 +1,10 @@
 
+
 export default function Home() {
-    return <h1>Here goes the Home page</h1>
+    return (
+        <main className="home__main">
+            <h1 className="home__title display">Dreaming in Spanish starts here—we’ve got the tools to get you there.</h1>
+            <button className="home__cta title">Find a class now!</button>
+        </main>    
+    )
 }
