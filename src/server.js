@@ -8,11 +8,11 @@ createServer({
 
     seeds(server) {
         const instructors = [
-            { name: "Carlos García", score: 4.8, spokenLanguages: "Spanish, English", interests: "Hiking, Photography" },
-            { name: "Sofía Martínez", score: 4.5, spokenLanguages: "Spanish, French", interests: "Cooking, Traveling" },
-            { name: "Luis Fernández", score: 4.9, spokenLanguages: "Spanish, German, English", interests: "Chess, Videogames" },
-            { name: "María López", score: 4.7, spokenLanguages: "Spanish, Portuguese", interests: "Dancing, Yoga" },
-            { name: "Javier Torres", score: 5.0, spokenLanguages: "Spanish, Italian", interests: "Cycling, Tech Gadgets" }
+            { name: "Carlos García", score: 4.8, spokenLanguages: "Spanish, English", interests: "Hiking, Photography", picture: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGhlYWRzaG90fGVufDB8fDB8fHww' },
+            { name: "Sofía Martínez", score: 4.5, spokenLanguages: "Spanish, French", interests: "Cooking, Traveling", picture: 'https://images.unsplash.com/photo-1606335192038-f5a05f761b3a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGhlYWRzaG90fGVufDB8fDB8fHww' },
+            { name: "Luis Fernández", score: 4.9, spokenLanguages: "Spanish, German, English", interests: "Chess, Videogames", picture: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhlYWRzaG90fGVufDB8fDB8fHww' },
+            { name: "María López", score: 4.7, spokenLanguages: "Spanish, Portuguese", interests: "Dancing, Yoga", picture: 'https://images.unsplash.com/photo-1573497161161-c3e73707e25c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhlYWRzaG90fGVufDB8fDB8fHww' },
+            { name: "Javier Torres", score: 5.0, spokenLanguages: "Spanish, Italian", interests: "Cycling, Tech Gadgets", picture: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHNob3R8ZW58MHx8MHx8fDA%3D' }
         ];
 
         // Ordered by time

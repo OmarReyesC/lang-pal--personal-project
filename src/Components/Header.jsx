@@ -23,7 +23,7 @@ export default function Header() {
                     Live Classes
                 </NavLink>
                 <Link className="profile-link" >
-                    <img src={ProfileIconUrl} alt="Profile" />
+                    <img src={ProfileIconUrl} alt="Profile Icon" />
                 </Link>
             </nav>
         </header>
