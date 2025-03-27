@@ -1,4 +1,11 @@
 
 export default function MyClasses() {
-    return <h1>Theses are my classes</h1>
+    return (
+        <section className="my-classes">
+            <h2 className="title">My previous classes</h2>
+            <div className="previous-classes__list">
+
+            </div>
+        </section>
+    )
 }

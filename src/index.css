@@ -32,6 +32,7 @@ body{
   flex-direction: column;
 }
 main {
+  flex: 1;  /*Getting main to occupy full screen*/
   margin-top: 4.375rem;  /* Top make room for Header to be fixed*/
 }
 a {
@@ -91,6 +92,15 @@ button {
   border: 1px solid var(--color-primary-100);
   border-radius: 0.5rem;
   background: none;
+  color: var(--color-primary-100);
+}
+
+/* Navbar Items */
+
+.navbar-item {
+  color: var(--color-neutral-10); /* Keeping links from becoming purple*/
+}
+.active {
   color: var(--color-primary-100);
 }
 
@@ -447,6 +457,20 @@ button {
   align-items: center;
   gap: 0.5rem;
   align-self: stretch;
+}
+
+/* My Learning */
+
+.my-learning__main {
+  padding: 2.5rem;
+}
+.my-learning__title {
+  margin-bottom: 1.5rem;
+}
+.my-learning__navbar {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3.25rem;
 }
 
 /* Review exercise */
