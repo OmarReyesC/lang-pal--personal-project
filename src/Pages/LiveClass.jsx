@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
+
 import groupsIconUrl from "../assets/groups.svg";
 import starIconUrl from "../assets/icon/star.svg";
 
 export default function LiveClass() {
     const [liveClass, setLiveClass] = useState(null);
     const params = useParams();
-    console.log(params);
+
     useEffect(() => {
         async function fetchLiveClass() {
             try {
@@ -17,14 +18,13 @@ export default function LiveClass() {
                 }
 
                 const data = await response.json();
-                console.log(data.classes)
                 setLiveClass(data.classes);
             }catch(error) {
                 console.error(error.message);
             }
         }
         fetchLiveClass();
-    }, []);
+    }, [params.classId]);
 
 
     if(!liveClass) {
