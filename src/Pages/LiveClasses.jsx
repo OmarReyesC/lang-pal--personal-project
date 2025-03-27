@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import groupsIconUrl from "../assets/groups.svg"
 
 export default function LiveClasses() {
@@ -49,6 +50,7 @@ export default function LiveClasses() {
                         <p className="title">${liveClass.price}.00</p>
                     </div>
                 </div>
+                <Link to={`${liveClass.id}`} />
             </article>
         )
     } )
