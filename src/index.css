@@ -473,6 +473,88 @@ button {
   margin-bottom: 3.25rem;
 }
 
+/* My Classes */
+
+.previous-classes__title {
+  margin-bottom: 2rem;
+}
+
+.previous-classes__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.class-card--previous {
+  position: relative;
+  display: flex;
+  padding: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border-radius: 1.5rem;
+  background: var(--color-primary-10);
+}
+
+.class-card--previous__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* align-self: stretch; */
+}
+.class-card--previous__level {
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-primary-100);
+  background: var(--color-neutral-100);
+  color: var(--color-primary-100);
+}
+.class-card--previous__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.class-card--previous__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.class-card--previous__instructor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.class-card--previous__instructor-pic {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.class-card--previous__instructor-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.class-card--previous a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
 /* Review exercise */
 
 .review {
