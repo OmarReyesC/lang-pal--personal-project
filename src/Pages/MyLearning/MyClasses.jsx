@@ -42,7 +42,7 @@ export default function MyClasses() {
                     </div>
                     <p className="class-card--previous__date body">{pastClass.date}</p>
                 </div>
-                <Link to={`${pastClass.id}`} ></Link>
+                <Link to={`${pastClass.id}`} />
             </article>
         )
     })

@@ -217,8 +217,13 @@ createServer({
         });
 
          // New API Endpoint: My Learning (Past Classes)
-         this.get("/my-learning/my-classes", (schema) => {
+        this.get("/my-learning/my-classes", (schema) => {
             return schema.classes.where((cls) => cls.date !== undefined);
+        });
+
+        this.get("/my-learning/my-classes/:id", (schema, request) => {
+            const id = request.params.id;
+            return schema.classes.where({ id });
         });
 
     }

@@ -555,6 +555,113 @@ button {
   z-index: 1;
 }
 
+/* Previous Class */
+
+.previous-class__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 4rem;
+}
+.previous-class__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+.previous-class__generals {
+  display: flex;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  align-items: center;
+  border-radius: 1rem;
+  background: var(--color-neutral-10);
+  color: var(--color-neutral-100);
+  align-self: stretch;
+}
+.previous-class__level {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-10);
+}
+
+.previous-class__nav {
+  display: flex;
+  padding: 1rem 1.5rem;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+
+.previous-class-brief {
+  display: flex;
+  padding: 0rem 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  align-self: stretch;
+}
+.class-brief__date-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.class-brief__date-time div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.class-brief__time {
+  color: var(--color-neutral-25);
+}
+
+.class-brief__description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  align-self: stretch;
+}
+
+
+.previous-class-instructor {
+  display: flex;
+  padding: 0rem 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.previous-class-instructor-start {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+.previous-class-instructor-pic {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.previous-class-instructor-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.previous-class__instructor-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+}
+
 /* Review exercise */
 
 .review {
