@@ -13,7 +13,8 @@ import Games from './Pages/MyLearning/Games.jsx';
 import PreviousClass from './Pages/MyLearning/PreviousClass.jsx';
 import PreviousClassDescription from './Pages/MyLearning/PreviousClassDescription.jsx';
 import PreviousClassInstructor from './Pages/MyLearning/PreviousClassInstructor.jsx';
-import App from './App.jsx'
+import App from './App.jsx';
+import NotFound from './Pages/NotFound.jsx';
 
 import './server.js'
 
@@ -38,6 +39,7 @@ createRoot(document.getElementById('root')).render(
 
             <Route path='games' element={<Games/>} />
           </Route>
+          <Route path='*' element={<NotFound />}/>
         </Route>
       </Routes>
     </BrowserRouter>
