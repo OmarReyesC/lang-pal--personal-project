@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useParams, useLocation } from "react-router";
 
 import groupsIconUrl from "../assets/groups.svg";
 import starIconUrl from "../assets/icon/star.svg";
@@ -7,6 +7,8 @@ import starIconUrl from "../assets/icon/star.svg";
 export default function LiveClass() {
     const [liveClass, setLiveClass] = useState(null);
     const params = useParams();
+
+    const prevLevelFilter = useLocation().state?.levelFilter || null;
 
     useEffect(() => {
         async function fetchLiveClass() {
@@ -38,11 +40,11 @@ export default function LiveClass() {
     return (
         <main className="live-class-main" >
             <Link 
-                to='..'
+                to={`..${prevLevelFilter ? `?level=${prevLevelFilter}` : ''}`}
                 relative="path" 
                 className="back-button body" 
             >
-                Back to all classes
+                Back to {prevLevelFilter ? prevLevelFilter : 'all'} classes
             </Link>
             <section className="live-class__info">
                 <section className="live-class__brief">

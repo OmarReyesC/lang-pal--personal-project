@@ -62,7 +62,12 @@ export default function LiveClasses() {
                         <p className="title">${liveClass.price}.00</p>
                     </div>
                 </div>
-                <Link to={`${liveClass.id}`} />
+                <Link 
+                    to={`${liveClass.id}`} 
+                    state={{
+                        levelFilter
+                    }}    
+                />
             </article>
         )
     } )
