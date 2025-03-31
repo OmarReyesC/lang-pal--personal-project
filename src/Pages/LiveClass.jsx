@@ -37,7 +37,11 @@ export default function LiveClass() {
 
     return (
         <main className="live-class-main" >
-            <Link className="back-button body" to= '/live-classes' >
+            <Link 
+                to='..'
+                relative="path" 
+                className="back-button body" 
+            >
                 Back to all classes
             </Link>
             <section className="live-class__info">

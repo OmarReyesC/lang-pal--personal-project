@@ -1,10 +1,22 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import groupsIconUrl from "../assets/groups.svg"
 
 export default function LiveClasses() {
     
     const [liveClasses, setLiveClasses] = useState([]);
+
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const levelFilter = searchParams.get('level');
+    const classesForDisplay = levelFilter 
+        ? liveClasses.filter(liveClass => liveClass.level === levelFilter) 
+        : liveClasses;
+
+    const activeFilterStyle = {
+        background: 'var(--color-neutral-10)',
+        color: 'var(--color-neutral-100)'
+    }
     
     useEffect(() => {
         async function fetchClasses() {
@@ -24,7 +36,7 @@ export default function LiveClasses() {
         fetchClasses();
     }, [])
 
-    const liveClassesCards = liveClasses.map( liveClass => {
+    const liveClassesCards = classesForDisplay.map( liveClass => {
         return (
             <article className="class-card" key={liveClass.id}>
                 <div className="class-card__header">
@@ -62,13 +74,50 @@ export default function LiveClasses() {
             <div className="live-classes__content">
                 <div className="live-classes__filters" >
                     <div className="live-classes__level-filters" >
-                        <button className="level-filter-item label" >A1</button>
-                        <button className="level-filter-item label" >A2</button>
-                        <button className="level-filter-item label" >B1</button>
-                        <button className="level-filter-item label" >B2</button>
-                        <button className="level-filter-item label" >C1</button>
+                        <button 
+                            onClick={() => {setSearchParams({level: 'A1'})}} 
+                            className='level-filter-item label' 
+                            style={levelFilter === 'A1' ? activeFilterStyle : null} 
+                        >
+                            A1
+                        </button>
+                        <button 
+                            onClick={() => {setSearchParams({level: 'A2'})}} 
+                            className='level-filter-item label' 
+                            style={levelFilter === 'A2' ? activeFilterStyle : null} 
+                        >
+                            A2
+                        </button>
+                        <button 
+                            onClick={() => {setSearchParams({level: 'B1'})}} 
+                            className='level-filter-item label' 
+                            style={levelFilter === 'B1' ? activeFilterStyle : null} 
+                        >
+                            B1
+                        </button>
+                        <button 
+                            onClick={() => {setSearchParams({level: 'B2'})}} 
+                            className='level-filter-item label' 
+                            style={levelFilter === 'B2' ? activeFilterStyle : null} 
+                        >
+                            B2
+                        </button>
+                        <button 
+                            onClick={() => {setSearchParams({level: 'C1'})}} 
+                            className='level-filter-item label' 
+                            style={levelFilter === 'C1' ? activeFilterStyle : null} 
+                        >
+                            C1
+                        </button>
+                        
                     </div>
-                    <button className="level-filter-clear label" >Clear filters</button>
+                    {levelFilter &&
+                        <button 
+                            onClick={() => {setSearchParams({})}} 
+                            className="level-filter-clear label" 
+                        >
+                            Clear filters
+                        </button>}
                 </div>
                 <div className="live-classes__display" >
                     {liveClassesCards}
