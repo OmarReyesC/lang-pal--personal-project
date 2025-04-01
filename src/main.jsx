@@ -1,6 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router';
+import { 
+  createBrowserRouter, 
+  RouterProvider,
+} from 'react-router';
 import './index.css';
 import Layout from './Pages/Layout.jsx';
 import Home from './Pages/Home.jsx';
@@ -16,11 +19,76 @@ import PreviousClassInstructor from './Pages/MyLearning/PreviousClassInstructor.
 import App from './App.jsx';
 import NotFound from './Pages/NotFound.jsx';
 
-import './server.js'
+import './server.js';
+
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+
+      {
+        path: 'live-classes',
+        element: <LiveClasses />
+      },
+      {
+        path: 'live-classes/:classId',
+        element: <LiveClass />
+      },
+
+      {
+        path: 'my-learning',
+        element: <MyLearning />,
+        children: [
+          {
+            index: true,
+            element: <Review />
+          },
+
+          {
+            path: 'my-classes', 
+            element:<MyClasses/>
+          },
+          {
+            path: 'my-classes/:classId', 
+            element:<PreviousClass/>,
+            children: [
+              {
+                index: true,
+                element: <PreviousClassDescription />
+              },
+              {
+                path: 'instructor',
+                element: <PreviousClassInstructor />
+              }
+            ]
+          },
+
+          {
+            path: 'games',
+            element: <Games/>
+          }
+        ]
+      },
+
+      {
+        path: '*',
+        element: <NotFound />
+      }
+    ]
+  }
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <RouterProvider router={router} />
+  </StrictMode>
+)
+
+{/* <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home/>} />
@@ -42,6 +110,4 @@ createRoot(document.getElementById('root')).render(
           <Route path='*' element={<NotFound />}/>
         </Route>
       </Routes>
-    </BrowserRouter>
-  </StrictMode>
-)
+    </BrowserRouter> */}
