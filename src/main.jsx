@@ -7,7 +7,7 @@ import {
 import './index.css';
 import Layout from './Pages/Layout.jsx';
 import Home from './Pages/Home.jsx';
-import LiveClasses from './Pages/LiveClasses.jsx';
+import LiveClasses, {liveClassesLoader} from './Pages/LiveClasses.jsx';
 import LiveClass from './Pages/LiveClass.jsx';
 import MyLearning from './Pages/MyLearning/MyLearning.jsx';
 import MyClasses from './Pages/MyLearning/MyClasses.jsx'
@@ -32,7 +32,8 @@ const router = createBrowserRouter([
 
       {
         path: 'live-classes',
-        element: <LiveClasses />
+        element: <LiveClasses />,
+        loader: liveClassesLoader
       },
       {
         path: 'live-classes/:classId',
