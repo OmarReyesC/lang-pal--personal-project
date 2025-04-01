@@ -3,23 +3,21 @@ import { Link, useSearchParams, useLoaderData } from "react-router";
 import groupsIconUrl from "../assets/groups.svg";
 
 export async function liveClassesLoader() {
-    try {
-        const res = await fetch('/api/classes');
-        if(!res.ok) {
-          const errorMessage = await res.text();
-          throw new Error(errorMessage);
-          }
-        return await res.json();
-      } catch(err) {
-        console.error(err);
-        return err;
-      }
+    const res = await fetch('/api/classes');
+    if(!res.ok) {
+        throw {
+            message: 'Failed to fetch vans',
+            statusText: res.statusText,
+            status: res.status
+        }
+    }
+    const data = await res.json();
+    return data;
 }
 
 export default function LiveClasses() {
     const loaderData = useLoaderData();
     
-    // const [liveClasses, setLiveClasses] = useState([]);
     const liveClasses = loaderData.classes
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -33,24 +31,6 @@ export default function LiveClasses() {
         background: 'var(--color-neutral-10)',
         color: 'var(--color-neutral-100)'
     }
-    
-    // useEffect(() => {
-    //     async function fetchClasses() {
-    //         try {
-    //             const response = await fetch('/api/classes');
-    //             if (!response.ok) {
-    //                 const errorText = await response.text();
-    //                 throw new Error(`Response status: ${response.status}: ${errorText}`);
-    //             }
-
-    //             const data = await response.json();
-    //             setLiveClasses(data.classes);
-    //         } catch (error) {
-    //             console.error(error.message);
-    //         }
-    //     }
-    //     fetchClasses();
-    // }, [])
 
     const liveClassesCards = classesForDisplay.map( liveClass => {
         return (

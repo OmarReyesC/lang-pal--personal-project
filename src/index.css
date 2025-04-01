@@ -732,6 +732,17 @@ button {
   gap: 4rem;
 }
 
+/* Error page */
+
+.error-main {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
 /* Footer */
 
 .footer {

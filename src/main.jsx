@@ -18,6 +18,7 @@ import PreviousClassDescription from './Pages/MyLearning/PreviousClassDescriptio
 import PreviousClassInstructor from './Pages/MyLearning/PreviousClassInstructor.jsx';
 import App from './App.jsx';
 import NotFound from './Pages/NotFound.jsx';
+import Error from './Pages/Error.jsx';
 
 import './server.js';
 
@@ -33,7 +34,8 @@ const router = createBrowserRouter([
       {
         path: 'live-classes',
         element: <LiveClasses />,
-        loader: liveClassesLoader
+        loader: liveClassesLoader,
+        errorElement: <Error />
       },
       {
         path: 'live-classes/:classId',
