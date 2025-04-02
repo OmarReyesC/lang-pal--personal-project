@@ -8,7 +8,7 @@ import './index.css';
 import Layout from './Pages/Layout.jsx';
 import Home from './Pages/Home.jsx';
 import LiveClasses, {liveClassesLoader} from './Pages/LiveClasses.jsx';
-import LiveClass from './Pages/LiveClass.jsx';
+import LiveClass, {liveClassLoader} from './Pages/LiveClass.jsx';
 import MyLearning from './Pages/MyLearning/MyLearning.jsx';
 import MyClasses from './Pages/MyLearning/MyClasses.jsx'
 import Review from './Pages/MyLearning/Review.jsx';
@@ -40,7 +40,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'live-classes/:classId',
-        element: <LiveClass />
+        element: <LiveClass />,
+        loader: liveClassLoader,
       },
 
       {

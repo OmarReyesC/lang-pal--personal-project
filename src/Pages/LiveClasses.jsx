@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link, useSearchParams, useLoaderData } from "react-router";
 import groupsIconUrl from "../assets/groups.svg";
 
@@ -6,7 +5,7 @@ export async function liveClassesLoader() {
     const res = await fetch('/api/classes');
     if(!res.ok) {
         throw {
-            message: 'Failed to fetch vans',
+            message: 'Failed to fetch live classes',
             statusText: res.statusText,
             status: res.status
         }

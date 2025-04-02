@@ -1,41 +1,27 @@
-import { useEffect, useState } from "react";
-import { Link, useParams, useLocation } from "react-router";
+import { Link, useLocation, useLoaderData } from "react-router";
 
 import groupsIconUrl from "../assets/groups.svg";
 import starIconUrl from "../assets/icon/star.svg";
 
+export async function liveClassLoader({ params }) {
+    const response = await fetch(`/api/classes/${params.classId}`);
+    if(!response.ok) {
+        throw {
+            message: 'Failed to fetch class',
+            statusText: response.statusText,
+            status: response.status
+        }
+    }
+
+    const data = await response.json();
+    return data
+}
+
 export default function LiveClass() {
-    const [liveClass, setLiveClass] = useState(null);
-    const params = useParams();
+    const liveClass = useLoaderData().classes;
 
     const prevLevelFilter = useLocation().state?.levelFilter || null;
 
-    useEffect(() => {
-        async function fetchLiveClass() {
-            try {
-                const response = await fetch(`/api/classes/${params.classId}`);
-                if(!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`Response status ${response.status}: ${errorText}`);
-                }
-
-                const data = await response.json();
-                setLiveClass(data.classes);
-            }catch(error) {
-                console.error(error.message);
-            }
-        }
-        fetchLiveClass();
-    }, [params.classId]);
-
-
-    if(!liveClass) {
-        return (
-            <main className="live-class-main">
-            <h1>Loading. Please wait...</h1>
-            </main>
-        )
-    }
 
     return (
         <main className="live-class-main" >
