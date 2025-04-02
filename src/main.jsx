@@ -16,6 +16,7 @@ import Games from './Pages/MyLearning/Games.jsx';
 import PreviousClass from './Pages/MyLearning/PreviousClass.jsx';
 import PreviousClassDescription from './Pages/MyLearning/PreviousClassDescription.jsx';
 import PreviousClassInstructor from './Pages/MyLearning/PreviousClassInstructor.jsx';
+import Login from './Pages/Login.jsx';
 import App from './App.jsx';
 import NotFound from './Pages/NotFound.jsx';
 import Error from './Pages/Error.jsx';
@@ -78,6 +79,11 @@ const router = createBrowserRouter([
       },
 
       {
+        path: 'login', 
+        element: <Login />
+      },
+
+      {
         path: '*',
         element: <NotFound />
       }
@@ -90,27 +96,3 @@ createRoot(document.getElementById('root')).render(
     <RouterProvider router={router} />
   </StrictMode>
 )
-
-{/* <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Home/>} />
-
-          <Route path='live-classes' element={<LiveClasses/>} />
-          <Route path='live-classes/:classId' element={<LiveClass/>} />
-
-          <Route path='my-learning' element={<MyLearning />} >
-            <Route index element={<Review/>} />
-
-            <Route path='my-classes' element={<MyClasses/>} />
-            <Route path='my-classes/:classId' element={<PreviousClass/>} >
-              <Route index element={<PreviousClassDescription />} />
-              <Route path='instructor' element={<PreviousClassInstructor />} />
-            </Route>
-
-            <Route path='games' element={<Games/>} />
-          </Route>
-          <Route path='*' element={<NotFound />}/>
-        </Route>
-      </Routes>
-    </BrowserRouter> */}

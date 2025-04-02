@@ -137,7 +137,8 @@ createServer({
             enrolledStudents: 6,
             date: "2024-02-15",
             description: "This class covered the essential vocabulary and phrases for shopping in Spanish. We practiced asking for prices, sizes, and colors in various store settings. Role-playing exercises helped reinforce sentence structure and pronunciation. Additionally, we learned cultural aspects of shopping etiquette in Spanish-speaking countries. By the end, students could confidently hold simple shopping conversations.",
-            instructor: instructors[0]
+            instructor: instructors[0],
+            userId: '123'
         });
 
         server.create("class", { 
@@ -149,7 +150,8 @@ createServer({
             enrolledStudents: 4,
             date: "2024-03-22",
             description: "This lesson focused on the art of making restaurant reservations over the phone or in person. Students practiced key phrases for specifying dates, times, and seating preferences. The class included listening comprehension activities with real restaurant dialogues. Cultural nuances, such as polite expressions and formal speech, were also covered. By the end, students were able to confidently book tables and handle unexpected questions from restaurant staff.",
-            instructor: instructors[1]
+            instructor: instructors[1],
+            userId: '123'
         });
 
         server.create("class", { 
@@ -161,7 +163,8 @@ createServer({
             enrolledStudents: 5,
             date: "2024-01-10",
             description: "In this class, students expanded their vocabulary related to hobbies, sports, and leisure activities. We focused on expressing preferences, opinions, and discussing shared interests. Through interactive speaking exercises, students improved fluency and learned how to structure conversations naturally. We also explored idiomatic expressions related to hobbies and pastimes. By the end, participants could confidently discuss their favorite activities in Spanish.",
-            instructor: instructors[2]
+            instructor: instructors[2],
+            userId: '123'
         });
 
         server.create("class", { 
@@ -173,7 +176,8 @@ createServer({
             enrolledStudents: 3,
             date: "2023-12-05",
             description: "This course provided students with the necessary skills to write clear, concise, and professional emails in Spanish. We covered proper greetings, formatting, and tone depending on the formality of the email. Common business phrases and expressions were introduced to make emails sound more natural. Students also practiced proofreading and editing their messages. By the end, they could write emails with confidence in a professional setting.",
-            instructor: instructors[3]
+            instructor: instructors[3],
+            userId: '123'
         });
 
         server.create("class", { 
@@ -185,7 +189,8 @@ createServer({
             enrolledStudents: 6,
             date: "2024-04-08",
             description: "This class helped absolute beginners introduce themselves with confidence in Spanish. We practiced greetings, stating our names, talking about where we’re from, and sharing basic personal information. Through guided dialogues and practice exercises, students developed a strong foundation for social conversations. The lesson also covered polite ways to ask for someone’s name and respond naturally. By the end, students could comfortably introduce themselves and make small talk in Spanish.",
-            instructor: instructors[4]
+            instructor: instructors[4],
+            userId: '123'
         });
 
     },
@@ -196,8 +201,8 @@ createServer({
         this.timing = 2000;
 
         this.get("/classes", (schema) => {
-            // return new Response(400, {}, {error: 'Error fetching data'})
-            return schema.classes.where((cls) => cls.date === undefined);
+            return new Response(400, {}, {error: 'Error fetching data'})
+            // return schema.classes.where((cls) => cls.date === undefined);
         });
 
         this.get("/classes/:id", (schema, request) => {
@@ -219,7 +224,7 @@ createServer({
 
          // New API Endpoint: My Learning (Past Classes)
         this.get("/my-learning/my-classes", (schema) => {
-            return schema.classes.where((cls) => cls.date !== undefined);
+            return schema.classes.where({userId: '123'});
         });
 
         this.get("/my-learning/my-classes/:id", (schema, request) => {

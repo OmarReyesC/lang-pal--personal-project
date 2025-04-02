@@ -721,6 +721,25 @@ button {
   width: 8rem;
 }
 
+/* Login Page */
+
+.login-main {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+}
+.login-form input {
+  margin-bottom: 2rem;
+}
+
 /* Not Found page */
 
 .not-found-main {
