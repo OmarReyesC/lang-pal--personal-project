@@ -1,27 +1,21 @@
-import { useEffect, useState } from "react";
-import { Outlet, Link, useParams, NavLink } from "react-router";
+import { Outlet, Link, NavLink, useLoaderData } from "react-router";
 
-export default function PreviousClass() {
-    const params = useParams();
-
-    const [pastClass, setPastClass] = useState(null);
-
-    useEffect(() => {
-        async function fetchPastClass() {
-            const response = await fetch(`/api/my-learning/my-classes/${params.classId}`);
-            const data = await response.json();
-
-            setPastClass(data.classes[0]);
+export async function previousClassLoader({ params }) {
+    const response = await fetch(`/api/my-learning/my-classes/${params.classId}`);
+    if(!response.ok) {
+        throw {
+            message: 'Failed to fetch class',
+            statusText: response.statusText,
+            status: response.status
         }
-        fetchPastClass();
-    }, []);
-
-    if(!pastClass) {
-        return (
-            <h1>Loading. Please wait...</h1>
-        )
     }
 
+    const data = await response.json();
+    return data
+}
+
+export default function PreviousClass() {
+    const pastClass = useLoaderData().classes[0];
 
     return (
         <>

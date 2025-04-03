@@ -13,7 +13,7 @@ import MyLearning from './Pages/MyLearning/MyLearning.jsx';
 import MyClasses, {myClassesLoader} from './Pages/MyLearning/MyClasses.jsx'
 import Review from './Pages/MyLearning/Review.jsx';
 import Games from './Pages/MyLearning/Games.jsx';
-import PreviousClass from './Pages/MyLearning/PreviousClass.jsx';
+import PreviousClass, {previousClassLoader} from './Pages/MyLearning/PreviousClass.jsx';
 import PreviousClassDescription from './Pages/MyLearning/PreviousClassDescription.jsx';
 import PreviousClassInstructor from './Pages/MyLearning/PreviousClassInstructor.jsx';
 import Login from './Pages/Login.jsx';
@@ -63,6 +63,7 @@ const router = createBrowserRouter([
           {
             path: 'my-classes/:classId', 
             element:<PreviousClass/>,
+            loader: previousClassLoader,
             children: [
               {
                 index: true,
