@@ -201,7 +201,7 @@ createServer({
         this.timing = 2000;
 
         this.get("/classes", (schema) => {
-            // return new Response(400, {}, {error: 'Error fetching data'})
+            return new Response(400, {}, {error: 'Error fetching data'})
             return schema.classes.where((cls) => cls.date === undefined);
         });
 
@@ -224,6 +224,7 @@ createServer({
 
          // New API Endpoint: My Learning (Past Classes)
         this.get("/my-learning/my-classes", (schema) => {
+            // return new Response(400, {}, {error: 'Error fetching data'})
             return schema.classes.where({userId: '123'});
         });
 

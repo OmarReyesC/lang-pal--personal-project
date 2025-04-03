@@ -1,32 +1,22 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLoaderData } from "react-router";
+
+export async function myClassesLoader() {
+    const response = await fetch('/api/my-learning/my-classes');
+    if (!response.ok) {
+        throw {
+            message: 'Failed to fetch past classes',
+            statusText: response.statusText,
+            status: response.status
+        }
+    }
+
+    const data = await response.json();
+    return data
+}
 
 export default function MyClasses() {
-    const [pastClasses, setPastClasses] = useState(null);
+    const pastClasses = useLoaderData().classes;
 
-    useEffect(() => {
-        async function fetchMyClasses() {
-            try {
-                const response = await fetch('/api/my-learning/my-classes');
-                if (!response.ok) {
-                    const errorMessage = await response.text();
-                    throw new Error(`Error status ${response.status}: ${errorMessage}`);
-                }
-
-                const data = await response.json();
-                setPastClasses(data.classes);
-            } catch(error) {
-                console.error(error);
-            }
-        }
-        fetchMyClasses();
-    }, [])
-    
-    if(!pastClasses) {
-        return (
-        <h2>Loading. Please wait...</h2>
-        )
-    }
 
     const previousClassesDisplay = pastClasses.map(pastClass => {
         return(
@@ -37,7 +27,7 @@ export default function MyClasses() {
                 </div>
                 <div className="class-card--previous__body">
                     <div className="class-card--previous__instructor">
-                        <img className="class-card--previous__instructor-pic" src={pastClass.instructor.picture} alt="" />
+                        <img className="class-card--previous__instructor-pic" src={pastClass.instructor.picture} alt={`Picture of ${pastClass.instructor.name}`} />
                         <p className="class-card--previous__instructor-name label">{pastClass.instructor.name}</p>
                     </div>
                     <p className="class-card--previous__date body">{pastClass.date}</p>

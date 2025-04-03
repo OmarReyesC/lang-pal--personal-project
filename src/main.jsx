@@ -10,7 +10,7 @@ import Home from './Pages/Home.jsx';
 import LiveClasses, {liveClassesLoader} from './Pages/LiveClasses.jsx';
 import LiveClass, {liveClassLoader} from './Pages/LiveClass.jsx';
 import MyLearning from './Pages/MyLearning/MyLearning.jsx';
-import MyClasses from './Pages/MyLearning/MyClasses.jsx'
+import MyClasses, {myClassesLoader} from './Pages/MyLearning/MyClasses.jsx'
 import Review from './Pages/MyLearning/Review.jsx';
 import Games from './Pages/MyLearning/Games.jsx';
 import PreviousClass from './Pages/MyLearning/PreviousClass.jsx';
@@ -42,11 +42,13 @@ const router = createBrowserRouter([
         path: 'live-classes/:classId',
         element: <LiveClass />,
         loader: liveClassLoader,
+        errorElement: <Error />
       },
 
       {
         path: 'my-learning',
         element: <MyLearning />,
+        errorElement: <Error />,
         children: [
           {
             index: true,
@@ -55,7 +57,8 @@ const router = createBrowserRouter([
 
           {
             path: 'my-classes', 
-            element:<MyClasses/>
+            element:<MyClasses/>,
+            loader: myClassesLoader
           },
           {
             path: 'my-classes/:classId', 
