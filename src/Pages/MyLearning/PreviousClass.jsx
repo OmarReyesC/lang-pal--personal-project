@@ -1,6 +1,9 @@
 import { Outlet, Link, NavLink, useLoaderData } from "react-router";
+import { requireAuth } from "../../utils";
 
 export async function previousClassLoader({ params }) {
+    await requireAuth();
+
     const response = await fetch(`/api/my-learning/my-classes/${params.classId}`);
     if(!response.ok) {
         throw {

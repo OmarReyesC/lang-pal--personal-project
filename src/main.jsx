@@ -22,6 +22,7 @@ import NotFound from './Pages/NotFound.jsx';
 import Error from './Pages/Error.jsx';
 
 import './server.js';
+import { requireAuth } from './utils.js';
 
 const router = createBrowserRouter([
   {
@@ -48,11 +49,13 @@ const router = createBrowserRouter([
       {
         path: 'my-learning',
         element: <MyLearning />,
+        loader: requireAuth,
         errorElement: <Error />,
         children: [
           {
             index: true,
-            element: <Review />
+            element: <Review />,
+            loader: requireAuth,
           },
 
           {
@@ -67,18 +70,21 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <PreviousClassDescription />
+                element: <PreviousClassDescription />,
+                loader: requireAuth,
               },
               {
                 path: 'instructor',
-                element: <PreviousClassInstructor />
+                element: <PreviousClassInstructor />,
+                loader: requireAuth,
               }
             ]
           },
 
           {
             path: 'games',
-            element: <Games/>
+            element: <Games/>,
+            loader: requireAuth,
           }
         ]
       },

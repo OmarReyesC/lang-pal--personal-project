@@ -1,6 +1,9 @@
 import { Link, useLoaderData } from "react-router";
+import { requireAuth } from "../../utils";
 
 export async function myClassesLoader() {
+    await requireAuth();
+
     const response = await fetch('/api/my-learning/my-classes');
     if (!response.ok) {
         throw {

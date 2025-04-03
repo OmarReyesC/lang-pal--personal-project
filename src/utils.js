@@ -1,3 +1,4 @@
+import { redirect } from "react-router";
 import { vocabulary } from "./vocabularies";
 
 export function getRandomWords() {
@@ -8,4 +9,16 @@ export function getRandomWords() {
         [words[i], words[rndmIndex]] = [words[rndmIndex], words[i]];
     }
     return words.slice(0, 5);
+}
+
+export async function requireAuth() {
+    const isLoggedIn = false;
+
+    if(!isLoggedIn) {
+        const response = redirect('/login');
+        response.body = true;
+        throw response;
+    }
+
+    return null
 }
