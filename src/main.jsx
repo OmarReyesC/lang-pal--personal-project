@@ -16,7 +16,7 @@ import Games from './Pages/MyLearning/Games.jsx';
 import PreviousClass, {previousClassLoader} from './Pages/MyLearning/PreviousClass.jsx';
 import PreviousClassDescription from './Pages/MyLearning/PreviousClassDescription.jsx';
 import PreviousClassInstructor from './Pages/MyLearning/PreviousClassInstructor.jsx';
-import Login from './Pages/Login.jsx';
+import Login, {loginLoader} from './Pages/Login.jsx';
 import App from './App.jsx';
 import NotFound from './Pages/NotFound.jsx';
 import Error from './Pages/Error.jsx';
@@ -91,7 +91,8 @@ const router = createBrowserRouter([
 
       {
         path: 'login', 
-        element: <Login />
+        element: <Login />,
+        loader: loginLoader
       },
 
       {

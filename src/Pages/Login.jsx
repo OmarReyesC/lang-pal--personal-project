@@ -1,5 +1,11 @@
+import { useLoaderData } from "react-router";
+
+export function loginLoader({ request }) {
+    return new URL (request.url).searchParams.get('message');
+}
 
 export default function Login() {
+    const logInMessage = useLoaderData();
 
     function signIn(formData) {
         console.log(formData.get('email'));
@@ -9,6 +15,9 @@ export default function Login() {
     return (
         <main className="login-main">
             <h1 className="headline">Sign in to your account</h1>
+            {logInMessage &&
+                <p className="title">{logInMessage}</p>
+            }
             <form action={signIn} className="login-form">
                 <label htmlFor="email">Email</label>
                 <input 
