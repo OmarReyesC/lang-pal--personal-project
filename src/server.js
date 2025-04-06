@@ -193,6 +193,8 @@ createServer({
             userId: '123'
         });
 
+        server.create("user", { id: "123", email: "x@mail.com", password: "123", name: "John" })
+
     },
 
     routes() {
@@ -216,6 +218,7 @@ createServer({
             if (!foundUser) {
                 return new Response(401, {}, { message: "Invalid credentials" });
             }
+            foundUser.password = undefined;
             return {
                 user: foundUser,
                 token: "fake-jwt-token"

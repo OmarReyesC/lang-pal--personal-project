@@ -92,7 +92,8 @@ const router = createBrowserRouter([
       {
         path: 'login', 
         element: <Login />,
-        loader: loginLoader
+        loader: loginLoader,
+        errorElement: <Error />
       },
 
       {

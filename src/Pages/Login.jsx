@@ -7,9 +7,25 @@ export function loginLoader({ request }) {
 export default function Login() {
     const logInMessage = useLoaderData();
 
-    function signIn(formData) {
-        console.log(formData.get('email'));
-        console.log(formData.get('password'));
+    async function signIn(formData) {
+        const response = await fetch('api/login', {
+            method: 'post',
+            body: JSON.stringify({
+                email: formData.get('email'),
+                password: formData.get('password')
+            })
+        })
+        const data = await response.json();
+
+        if(!response.ok) {
+            throw {
+                message: data.message,
+                statusText: response.statusText,
+                status: response.status
+            }
+        }
+
+        console.log (data);
     }
 
     return (
