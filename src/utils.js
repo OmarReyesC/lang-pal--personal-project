@@ -12,7 +12,7 @@ export function getRandomWords() {
 }
 
 export async function requireAuth() {
-    const isLoggedIn = false;
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
 
     if(!isLoggedIn) {
         const response = redirect('/login?message=Please log in first');

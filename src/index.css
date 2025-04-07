@@ -94,6 +94,13 @@ button {
   background: none;
   color: var(--color-primary-100);
 }
+.disabled-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-75);
+}
 
 /* Navbar Items */
 

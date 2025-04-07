@@ -1,40 +1,51 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, Form, useActionData, redirect } from "react-router";
 
 export function loginLoader({ request }) {
     return new URL (request.url).searchParams.get('message');
 }
 
+export async function action({ request }) {
+    const formData = await request.formData();    
+    
+    const response = await fetch('api/login', {
+        method: 'post',
+        body: JSON.stringify({
+            email: formData.get('email'),
+            password: formData.get('password')
+        })
+    })
+
+    if(!response.ok) {
+        throw {
+            message: response.message,
+            statusText: response.statusText,
+            status: response.status
+        }
+    }
+
+    const data = await response.json();
+
+    localStorage.setItem('isLoggedIn', true);
+    const redir = redirect('/my-learning');
+    redir.body = true;
+    return redir;
+
+}
+
 export default function Login() {
     const logInMessage = useLoaderData();
 
-    async function signIn(formData) {
-        const response = await fetch('api/login', {
-            method: 'post',
-            body: JSON.stringify({
-                email: formData.get('email'),
-                password: formData.get('password')
-            })
-        })
-        const data = await response.json();
+    const actionData = useActionData();
+    console.log(actionData);
 
-        if(!response.ok) {
-            throw {
-                message: data.message,
-                statusText: response.statusText,
-                status: response.status
-            }
-        }
-
-        console.log (data);
-    }
-
+    
     return (
         <main className="login-main">
             <h1 className="headline">Sign in to your account</h1>
             {logInMessage &&
                 <p className="title">{logInMessage}</p>
             }
-            <form action={signIn} className="login-form">
+            <Form className="login-form" method="post">
                 <label htmlFor="email">Email</label>
                 <input 
                     type="email" 
@@ -45,8 +56,12 @@ export default function Login() {
                     type="password" 
                     name="password"
                 />
-                <button className="primary-button">Log in</button>
-            </form>
+                <button 
+                    className='primary-button'
+                >
+                    Log in
+                </button>
+            </Form>
         </main>
     )
 }

@@ -2,6 +2,7 @@ import { NavLink, Link } from "react-router";
 import ProfileIconUrl from '../assets/profile-icon.svg';
 
 export default function Header() {
+
     return (
         <header className="header">
             <Link to="/" className="header__logo headline">Lang-Pal</Link>
