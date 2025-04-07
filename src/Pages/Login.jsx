@@ -45,7 +45,11 @@ export default function Login() {
             {logInMessage &&
                 <p className="title">{logInMessage}</p>
             }
-            <Form className="login-form" method="post">
+            <Form 
+                className="login-form" 
+                method="post"
+                replace
+            >
                 <label htmlFor="email">Email</label>
                 <input 
                     type="email" 

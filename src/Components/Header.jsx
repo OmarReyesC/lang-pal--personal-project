@@ -28,6 +28,14 @@ export default function Header() {
                     className="profile-link" >
                     <img src={ProfileIconUrl} alt="Profile Icon" />
                 </Link>
+                <button 
+                    onClick={() => {
+                        localStorage.clear();
+                        console.log(localStorage);
+                    }}
+                >
+                    Log out
+                </button>
             </nav>
         </header>
     )
