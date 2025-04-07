@@ -216,7 +216,7 @@ createServer({
             const { email, password } = JSON.parse(request.requestBody);
             const foundUser = schema.users.findBy({ email, password });
             if (!foundUser) {
-                return new Response(401, {}, { message: "Invalid credentials" });
+                return new Response(401, {}, {error: "Invalid credentials"} );
             }
             foundUser.password = undefined;
             return {

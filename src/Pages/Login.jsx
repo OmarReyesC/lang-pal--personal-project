@@ -7,43 +7,46 @@ export function loginLoader({ request }) {
 export async function action({ request }) {
     const formData = await request.formData();    
     
-    const response = await fetch('api/login', {
-        method: 'post',
-        body: JSON.stringify({
-            email: formData.get('email'),
-            password: formData.get('password')
+    try {
+        const response = await fetch('api/login', {
+            method: 'post',
+            body: JSON.stringify({
+                email: formData.get('email'),
+                password: formData.get('password')
+            })
         })
-    })
 
-    if(!response.ok) {
-        throw {
-            message: response.message,
-            statusText: response.statusText,
-            status: response.status
+        const data = await response.json();
+
+        if(!response.ok) {
+            throw {
+                message: data.error,
+                statusText: response.statusText,
+                status: response.status
+            }
         }
+
+        localStorage.setItem('isLoggedIn', true);
+        const redir = redirect('/my-learning');
+        redir.body = true;
+        return redir;
+    } catch (error) {
+        return error.message;
     }
-
-    const data = await response.json();
-
-    localStorage.setItem('isLoggedIn', true);
-    const redir = redirect('/my-learning');
-    redir.body = true;
-    return redir;
-
 }
 
 export default function Login() {
     const logInMessage = useLoaderData();
-
     const actionData = useActionData();
-    console.log(actionData);
 
-    
     return (
         <main className="login-main">
             <h1 className="headline">Sign in to your account</h1>
-            {logInMessage &&
-                <p className="title">{logInMessage}</p>
+            {
+                logInMessage && <p className="title error-message" >{logInMessage}</p>
+            }
+            {
+                actionData && <p className="label error-message" >{actionData}</p>
             }
             <Form 
                 className="login-form" 

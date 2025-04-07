@@ -747,6 +747,10 @@ button {
   margin-bottom: 2rem;
 }
 
+.error-message {
+  color: var(--color-aux-error-100);
+}
+
 /* Not Found page */
 
 .not-found-main {
