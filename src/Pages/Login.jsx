@@ -1,4 +1,4 @@
-import { useLoaderData, Form, useActionData, redirect } from "react-router";
+import { useLoaderData, Form, useActionData, redirect, useNavigation } from "react-router";
 
 export function loginLoader({ request }) {
     return new URL (request.url).searchParams.get('message');
@@ -38,6 +38,7 @@ export async function action({ request }) {
 export default function Login() {
     const logInMessage = useLoaderData();
     const actionData = useActionData();
+    const navigationState = useNavigation().state;
 
     return (
         <main className="login-main">
@@ -46,7 +47,8 @@ export default function Login() {
                 logInMessage && <p className="title error-message" >{logInMessage}</p>
             }
             {
-                actionData && <p className="label error-message" >{actionData}</p>
+                actionData && navigationState === 'idle' 
+                && <p className="label error-message" >{actionData}</p>
             }
             <Form 
                 className="login-form" 
@@ -64,9 +66,10 @@ export default function Login() {
                     name="password"
                 />
                 <button 
-                    className='primary-button'
+                    className={navigationState === 'submitting' ? 'disabled-button' : 'primary-button'}
+                    disabled={navigationState === 'submitting'}
                 >
-                    Log in
+                    {navigationState === 'submitting' ? 'Logging in...' : 'Log in' }
                 </button>
             </Form>
         </main>
