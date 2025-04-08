@@ -1,11 +1,19 @@
-import { useLoaderData, Form, useActionData, redirect, useNavigation } from "react-router";
+import { 
+    useLoaderData, 
+    Form, 
+    useActionData, 
+    redirect, 
+    useNavigation,
+} from "react-router";
 
 export function loginLoader({ request }) {
     return new URL (request.url).searchParams.get('message');
 }
 
 export async function action({ request }) {
-    const formData = await request.formData();    
+    const formData = await request.formData();
+    const redirectPathname = new URL(request.url).searchParams.get('pathname') || '/my-learning';
+    console.log(redirectPathname)
     
     try {
         const response = await fetch('api/login', {
@@ -27,9 +35,10 @@ export async function action({ request }) {
         }
 
         localStorage.setItem('isLoggedIn', true);
-        const redir = redirect('/my-learning');
+        const redir = redirect(`${redirectPathname}`);
         redir.body = true;
         return redir;
+
     } catch (error) {
         return error.message;
     }

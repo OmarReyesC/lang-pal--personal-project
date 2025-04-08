@@ -11,11 +11,12 @@ export function getRandomWords() {
     return words.slice(0, 5);
 }
 
-export async function requireAuth() {
+export async function requireAuth({request}) {
+    const pathname = new URL(request.url).pathname;
     const isLoggedIn = localStorage.getItem('isLoggedIn');
 
     if(!isLoggedIn) {
-        const response = redirect('/login?message=Please log in first');
+        const response = redirect(`/login?message=Please log in first&pathname=${pathname}`);
         response.body = true;
         throw response;
     }
