@@ -227,12 +227,13 @@ createServer({
 
          // New API Endpoint: My Learning (Past Classes)
         this.get("/my-learning/my-classes", (schema) => {
-            // return new Response(400, {}, {error: 'Error fetching data'})
+            // return new Response(400, {}, {error: 'Error fetching previous classes'})
             return schema.classes.where({userId: '123'});
         });
 
         this.get("/my-learning/my-classes/:id", (schema, request) => {
             const id = request.params.id;
+            // return new Response(400, {}, {error: 'Error fetching class'})
             return schema.classes.where({ id });
         });
 

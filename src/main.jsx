@@ -42,7 +42,9 @@ const router = createBrowserRouter([
       {
         path: 'live-classes/:classId',
         element: <LiveClass />,
-        loader: liveClassLoader,
+        loader: ({ params }) => { 
+          return { liveClassPromise: liveClassLoader(params)}
+        },
         errorElement: <Error />
       },
 
