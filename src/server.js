@@ -200,10 +200,10 @@ createServer({
     routes() {
         this.namespace = "api";
         this.logging = false;
-        this.timing = 2000;
+        this.timing = 4000;
 
         this.get("/classes", (schema) => {
-            return new Response(400, {}, {error: 'Error fetching data'})
+            //return new Response(400, {}, {error: 'Error fetching data'})
             return schema.classes.where((cls) => cls.date === undefined);
         });
 
